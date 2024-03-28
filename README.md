@@ -1,4 +1,3 @@
-==================================
 CMB Summer School - UT Austin 2024
 ==================================
 
@@ -11,4 +10,5 @@ Installation and Setup
 ----------------------
 
 ** Details of conda envirnoment here.
+
 ** What needs to be download to use, etc.

@@ -45,6 +45,6 @@ From the command line...
 Repository Organization
 ----------------------
 
-`UT_Notebooks`: Contains the Jupyter notebooks we will go through in the workbook sessions of this summer school. 
-`Presentations`: Contains the slides for talks given in this summer school.
-`CMB-S4_AnalysisSummerSchool`: A clone of the CMB-S4 Summer School notebooks that our school is based on. These are for the interested participant who may want to do more extended self study after the UT summer school concludes.
+* `UT_Notebooks`: Contains the Jupyter notebooks we will go through in the workbook sessions of this summer school. 
+* `Presentations`: Contains the slides for talks given in this summer school.
+* `CMB-S4_AnalysisSummerSchool`: A clone of the CMB-S4 Summer School notebooks that our school is based on. These are for the interested participant who may want to do more extended self study after the UT summer school concludes.

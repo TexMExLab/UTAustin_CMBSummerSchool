@@ -1,0 +1,25 @@
+name: CMBSchool
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8,<3.11
+  - pip
+  - jupyter
+  - ipywidgets
+  - ipykernel
+  - ipython
+  - jupyterlab
+  - nbclient
+  - jupyterlab_widgets
+  - cython
+  - pip: 
+    - numpy
+    - scipy 
+    - astropy
+    - getdist
+    - matplotlib
+    - cobaya
+    - healpy
+    - class
+    - pyactlike

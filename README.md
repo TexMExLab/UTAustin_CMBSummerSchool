@@ -37,10 +37,10 @@ From the command line...
    Note: this step may not be necessary, but different machines behave differently and it doesn't hurt.
 
 6. Open the Jupyter notebook `Day0_FFT_intro_CMB_School.ipynb` in the `UT_Notebooks` directory and run the cells under the "Necessary packages for UT CMB Summer School" heading. If all the cells evaluate without an error, you've successfully installed everything!
-   * If any package does not properly import, try to install it directly from its source (google is your friend here). For problems importing with `class`, `pyactlike`, or `cobaya`, please reach out to the summer school organizers directly as the installation can be more involved. 
+   * If any package does not properly import, try to install it directly from its source (google is your friend here). For problems importing `class`, `pyactlike`, or `cobaya`, please reach out to the summer school organizers directly as the installation can be more involved. 
    * Note: open the Jupyter notebooks in whatever way you like, i.e. via the command line by running `jupyter notebook` or through a code editor like [VSCode](https://code.visualstudio.com). If you have no experience with Jupyter notebooks, please contact the summer school organizers prior to the school.
 
-If you get stuck on any part of the installation process, please reach out to the summer school organizers for help!
+**If you get stuck on any part of the installation process, please reach out to the summer school organizers for help!**
 
 Repository Organization
 ----------------------

@@ -63,10 +63,10 @@ def make_CMB_T_map(N,pix_size,ell,DlTT):
     return(CMB_T)
 ###############################
 
-def Plot_CMB_Map(Map_to_Plot,c_min,c_max,X_width,Y_width):
+def Plot_CMB_Map(Map_to_Plot,c_min,c_max,X_width,Y_width,figsize_x=10,figsize_y=10):
     from mpl_toolkits.axes_grid1 import make_axes_locatable
     print("map mean:",np.mean(Map_to_Plot),"map rms:",np.std(Map_to_Plot))
-    plt.gcf().set_size_inches(10, 10)
+    plt.gcf().set_size_inches(figsize_x, figsize_y)
     im = plt.imshow(Map_to_Plot, interpolation='bilinear', origin='lower',cmap=cm.RdBu_r)
     im.set_clim(c_min,c_max)
     ax=plt.gca()
@@ -78,11 +78,12 @@ def Plot_CMB_Map(Map_to_Plot,c_min,c_max,X_width,Y_width):
     im.set_extent([0,X_width,0,Y_width])
     plt.ylabel('angle $[^\circ]$')
     plt.xlabel('angle $[^\circ]$')
-    cbar.set_label('tempearture [uK]', rotation=270)
+    cbar.set_label('temperature [uK]', rotation=270)
     
     plt.show()
     # return(0)
 ###############################
+
 
 
 def Poisson_source_component(N,pix_size,Number_of_Sources,Amplitude_of_Sources):

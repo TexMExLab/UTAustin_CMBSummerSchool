@@ -229,20 +229,44 @@ def make_noise_map(N,pix_size,white_noise_level,atmospheric_noise_level,one_over
     noise_map = np.real(white_noise + atmospheric_noise + oneoverf_noise)
     return(noise_map)
   ###############################
+
+# VS edited to actually work
+# def Filter_Map(Map,N,N_mask):
+#     N=int(N)
+#     ## set up a x, y, and r coordinates for mask generation
+#     ones = np.ones(N)
+#     inds  = (np.arange(N)+.5 - N/2.) 
+#     X = np.outer(ones,inds)
+#     Y = np.transpose(X)
+#     R = np.sqrt(X**2. + Y**2.)  ## angles relative to 1 degrees  
+    
+#     ## make a mask
+#     mask  = np.ones([N,N])
+#     mask[np.where(np.abs(X) < N_mask)]  = 0
+
+#     return apply_filter(Map,mask)
+
 def Filter_Map(Map,N,N_mask):
     N=int(N)
     ## set up a x, y, and r coordinates for mask generation
-    ones = np.ones(N)
+    ones = np.ones(N) # N is the size of the map
     inds  = (np.arange(N)+.5 - N/2.) 
+
     X = np.outer(ones,inds)
     Y = np.transpose(X)
-    R = np.sqrt(X**2. + Y**2.)  ## angles relative to 1 degrees  
+    R = np.sqrt(X**2. + Y**2.)  ## angles realative to 1 degrees  
     
     ## make a mask
     mask  = np.ones([N,N])
     mask[np.where(np.abs(X) < N_mask)]  = 0
-
-    return apply_filter(Map,mask)
+    
+    ## apply the filter in fourier space
+    FMap = np.fft.fftshift(np.fft.ifft2(np.fft.fftshift(Map)))
+    FMap_filtered = FMap * mask
+    Map_filtered = np.real(np.fft.fftshift(np.fft.fft2(np.fft.fftshift(FMap_filtered))))
+    
+    ## return the output
+    return(Map_filtered)
 
 
 def apply_filter(Map,filter2d):

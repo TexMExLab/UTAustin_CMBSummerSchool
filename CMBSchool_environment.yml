@@ -12,7 +12,7 @@ dependencies:
   - jupyterlab
   - nbclient
   - jupyterlab_widgets
-  - cython
+  - cython>=0.29.21,<3
   - pip: 
     - numpy
     - scipy 

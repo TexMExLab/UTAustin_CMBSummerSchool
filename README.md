@@ -39,6 +39,13 @@ From the command line...
 6. Open the Jupyter notebook `Day0_FFT_intro_CMB_School.ipynb` in the `UT_Notebooks` directory and run the cells under the "Necessary packages for UT CMB Summer School" heading. If all the cells evaluate without an error, you've successfully installed everything!
    * If any package does not properly import, try to install it directly from its source (google is your friend here). For problems importing `CLASS`, `pyactlike`, or `cobaya`, please reach out to the summer school organizers directly as the installation can be more involved. 
    * Note: open the Jupyter notebooks in whatever way you like, i.e. via the command line by running `jupyter notebook` or through a code editor like [VSCode](https://code.visualstudio.com). If you have no experience with Jupyter notebooks, please contact the summer school organizers prior to the school.
+  
+We will also be using a repo called jbolo, this does not need to be installed, but you do need to download it:
+
+1. git clone https://github.com/JohnRuhl/jbolo.git
+2. For notebooks we use it with on Day 1 (coming soon!), you'll need to import sys and add sys.path.append('/path/to/jbolo/python') to each notebook.
+3. DOWNLOAD 1 GB atosphere file http://pbfs.physics.berkeley.edu/BoloCalc/ATM/atm_20201217.hdf5
+4. More detailed instructions exist on that repo if you have issues
 
 **If you get stuck on any part of the installation process, please reach out to the summer school organizers for help!**
 
@@ -80,6 +87,7 @@ _Tips from personal experience:_ The most typical problem with installing `CLASS
 
 ### Windows Recommendations
 
+* Anaconda has issues with installing Class (10 points to whoever can sort that out). Alternative approach that has worked for some is installing WSL, Windows Subsystem for Linux, and installing relevant packages there.
 * Install Anaconda https://www.anaconda.com/download
 * Open the CMB school notebooks using Jupyter Lab or Jupyter applications on Anaconda navigator. (Jupyter Lab allows many notebooks to be open at once on a single browser tab.)
 

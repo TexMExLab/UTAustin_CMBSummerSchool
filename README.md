@@ -49,7 +49,7 @@ We will also be using a repo called jbolo, this does not need to be installed, b
 
 **If you get stuck on any part of the installation process, please reach out to the summer school organizers for help!**
 
-### Mac OS Recommendations
+### Mac OS/Linux/Command Line Recommendations
 
 If you run into problems installing `pyactlike` through the provided conda environment, try a manual installation, described below. 
 

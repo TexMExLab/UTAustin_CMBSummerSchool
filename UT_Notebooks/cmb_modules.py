@@ -230,22 +230,6 @@ def make_noise_map(N,pix_size,white_noise_level,atmospheric_noise_level,one_over
     return(noise_map)
   ###############################
 
-# VS edited to actually work
-# def Filter_Map(Map,N,N_mask):
-#     N=int(N)
-#     ## set up a x, y, and r coordinates for mask generation
-#     ones = np.ones(N)
-#     inds  = (np.arange(N)+.5 - N/2.) 
-#     X = np.outer(ones,inds)
-#     Y = np.transpose(X)
-#     R = np.sqrt(X**2. + Y**2.)  ## angles relative to 1 degrees  
-    
-#     ## make a mask
-#     mask  = np.ones([N,N])
-#     mask[np.where(np.abs(X) < N_mask)]  = 0
-
-#     return apply_filter(Map,mask)
-
 def Filter_Map(Map,N,N_mask):
     N=int(N)
     ## set up a x, y, and r coordinates for mask generation
@@ -268,15 +252,46 @@ def Filter_Map(Map,N,N_mask):
     ## return the output
     return(Map_filtered)
 
+def Filter_Map_MultiMask(Map, N, N_Xdestripe=0, N_Ydestripe=0, N_R_mask_min=0, N_R_mask_max=None, return_mask=False):
+    """
+    Filters a map by masking in fourier space. 
+    Choose N_Xdestripe for destriping in X direction
+    Choose N_Ydestripe for destriping in Y direction
+    Choose N_R_mask* for general ell masking. 
+        _min all 'ells' smaller than min are masked
+        _max all 'ells' larger than max are masked
+    """
+    N=int(N) #this is the number of pixels in the map.
+    
+    ## set up a x, y, and r coordinates for mask generation
+    ones = np.ones(N)
+    inds = (np.arange(N)+.5 - N/2.)
+    X = np.outer(ones,inds)
+    Y = np.transpose(X)
+    R = np.sqrt(X**2. + Y**2.) ## angles relative to 1 degrees
 
-def apply_filter(Map,filter2d):
+    ## make a mask
+    mask = np.ones([N,N])
+    mask[np.where(np.abs(X) < N_Xdestripe)] = 0 
+    mask[np.where(np.abs(Y) < N_Ydestripe)] = 0    
+    mask[np.where(R < N_R_mask_min )] = 0
+    if N_R_mask_max is not None:
+        if N_R_mask_max < N_R_mask_min:
+            print('Invalid max ell, choose max radius to be bigger than minimum')
+        else:
+            mask[np.where(R > N_R_mask_max)] = 0         
+    
     ## apply the filter in fourier space
     FMap = np.fft.fftshift(np.fft.ifft2(np.fft.fftshift(Map)))
-    FMap_filtered = FMap * filter2d
-    Map_filtered = np.real(np.fft.fftshift(np.fft.fft2(FMap_filtered)))
-    
-    ## return the output
-    return(Map_filtered)
+    FMap_filtered = FMap * mask
+    Map_filtered = np.real(np.fft.fftshift(np.fft.fft2(np.fft.fftshift(FMap_filtered))))
+
+    if return_mask:
+        return Map_filtered, mask
+    else:
+        return Map_filtered
+
+
 
 
 

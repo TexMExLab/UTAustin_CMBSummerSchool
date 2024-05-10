@@ -109,5 +109,6 @@ theory:
 
 sampler:
   mcmc:
+      covmat: mcmc_so.covmat
 
-output: chains/mcmc_so_try
+output: chains/mcmc_so_wcov
